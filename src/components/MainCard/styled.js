@@ -7,11 +7,11 @@ export const MainWrapper = styled(View)`
   flex-direction: column;
   padding-left: 20px;
   padding-right: 20px;
+  padding-bottom: 30px;
 `;
 
 export const TempratureWrapper = styled(View)`
   align-items: flex-start;
-  padding-bottom: 20px;
 `;
 
 export const Temperature = styled(Text)`

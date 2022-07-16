@@ -4,7 +4,6 @@ import { View, Text, ScrollView } from 'react-native';
 export const MainWrapper = styled(View)`
   display: flex;
   flex-direcion: column;
-  background-color: #7146e8;
   flex: 1;
 `;
 
@@ -30,6 +29,5 @@ export const OtherCitiesSection = styled(ScrollView)`
 export const OtherCitiesWrapper = styled(View)`
   flex-direction: row;
   padding-right: 35px;
-  padding-bottom: 50px;
-  align-items: flex-end;
+  align-items: center;
 `;

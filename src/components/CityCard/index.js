@@ -40,7 +40,6 @@ const CityCard = () => {
     </MainWrapper>
   )
 
-
 };
 
 export default CityCard;

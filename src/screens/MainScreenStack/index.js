@@ -6,6 +6,7 @@ import {
   CardStyleInterpolators,
 } from '@react-navigation/stack';
 import MainScreen from '../MainScreen';
+import DetailScreen from '../DetailScreen';
 
 const Stack = createStackNavigator();
 
@@ -19,10 +20,15 @@ const MainScreenStack = () => {
           component={MainScreen}
           options={{
             headerShown: false,
-            headerStyle: { elevation: 0, shadowOpacity: 0 },
-            headerTitle: '',
-            headerTitleAlign: 'center',
-            cardStyleInterpolator: CardStyleInterpolators.forBottomSheetAndroid,
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+          }}
+        />
+        <Stack.Screen
+          name="DetailScreen"
+          component={DetailScreen}
+          options={{
+            headerShown: false,
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           }}
         />
       </Stack.Navigator>

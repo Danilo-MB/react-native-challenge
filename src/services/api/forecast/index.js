@@ -7,8 +7,8 @@ const path = (apiUrl, city) => `http://api.weatherapi.com/v1/${apiUrl}?key=${API
 export const getCurrentCityInfo = async (city) => {
   try {
     const response = await axios.get(path('current.json', city));
-    //console.log(response.data.current, 'response')
-    return response.data.current;
+    console.log(response.data, 'response')
+    return response.data;
   } catch (error) {
     if (error.reponse) {
       return error.response;

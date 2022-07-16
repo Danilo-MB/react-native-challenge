@@ -1,4 +1,5 @@
 import React from 'react';
+import { Image } from 'react-native';
 import { 
   MainWrapper,
   IconAndDataSectionWrapper,
@@ -9,28 +10,32 @@ import {
   TempratureWrapper,
   Temperature,
 } from './styled';
+import DetailButton from '../DetailButton';
 
-const MainCard = () => {
+const MainCard = ({ iconUrl, temperature, wind, humidt, goToDetail }) => {
   
   return (
     <MainWrapper>
       <TempratureWrapper>
-        <Temperature>18°C</Temperature>
+        <Temperature>{temperature}</Temperature>
       </TempratureWrapper>
       <IconAndDataSectionWrapper>
-        <DataItemHeader>aca va el icono</DataItemHeader>
+        <Image 
+          source={{uri: iconUrl}}
+          style={{width: 200, height: 200}} 
+        />
         <DataSectionWrapper>
           <WeatherDataItem>
             <DataItemHeader>wind</DataItemHeader>
-            <DataItemInfo>342</DataItemInfo>
+            <DataItemInfo>{wind}</DataItemInfo>
           </WeatherDataItem>
           <WeatherDataItem>
-            <DataItemHeader>wind</DataItemHeader>
-            <DataItemInfo>342</DataItemInfo>
+            <DataItemHeader>Humidt</DataItemHeader>
+            <DataItemInfo>{humidt}</DataItemInfo>
           </WeatherDataItem>
+          <DetailButton onPress={goToDetail} />
         </DataSectionWrapper>
       </IconAndDataSectionWrapper>
-
     </MainWrapper>
 
   )
