@@ -22,7 +22,7 @@ import Prompt from '../../components/Prompt';
 import moment from 'moment';
 import Loading from '../../components/Loading';
 
-const MainScreen = ({ navigation }) => {
+const MainScreen = ({ navigation, route }) => {
 
   const height = Dimensions.get('window').height;
   const currentDate = `${
@@ -57,7 +57,7 @@ const MainScreen = ({ navigation }) => {
     getOtherCities().then((cities) => setOtherCitiesList(cities));
   }, []);
 
-  console.log(otherCitiesList, 'other cities')
+  //console.log(otherCitiesList, 'other cities')
 
   const onChangeFilter = filter => {
     setIsSearching(true);
@@ -109,7 +109,7 @@ const MainScreen = ({ navigation }) => {
         temperature={selectedCity.current?.temp_c}
         wind={selectedCity.current?.wind_kph}
         humidt={selectedCity.current?.humidity}
-        goToDetail={() => navigation.navigate('DetailScreen')}
+        goToDetail={() => navigation.navigate('DetailScreen', { city: selectedCity})}
       />
       <OtherCitiesHeaderSection>
         <OtherCitiesHeader>Other Cities</OtherCitiesHeader>

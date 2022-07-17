@@ -1,10 +1,10 @@
 import React from 'react';
 import { Wrapper, ButtonText } from './styled';
 
-const ForecastButton = () => {
+const ForecastButton = ({ onPress }) => {
 
   return (
-    <Wrapper>
+    <Wrapper onPress={onPress}>
       <ButtonText>Tomorrow</ButtonText>
     </Wrapper>
   )

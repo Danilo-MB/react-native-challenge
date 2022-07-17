@@ -15,7 +15,7 @@ export const Wrapper = styled(TouchableOpacity)`
 `;
 
 export const ButtonText = styled(Text)`
-  font-size: 16px;
+  font-size: 14px;
   ${getFont('Poppins', '600')};
   color: white;
 `;

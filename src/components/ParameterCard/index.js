@@ -1,4 +1,5 @@
 import React from 'react';
+import { Image } from 'react-native';
 import { 
   MainWrapper,
   ParameterAndValueWrapper,
@@ -6,14 +7,17 @@ import {
   Value
 } from './styled';
 
-const ParameterCard = () => {
+const ParameterCard = ({ iconUrl, parameter, value}) => {
 
   return (
     <MainWrapper>
-      <Parameter>icono</Parameter>
+    <Image 
+        source={{uri: iconUrl}}
+        style={{width: 40, height: 40}} 
+      />
       <ParameterAndValueWrapper>
-        <Parameter>Parametro</Parameter>
-        <Value>Valor</Value>
+        <Parameter>{parameter}</Parameter>
+        <Value>{value}</Value>
       </ParameterAndValueWrapper>
     </MainWrapper>
   )

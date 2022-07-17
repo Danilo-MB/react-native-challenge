@@ -12,6 +12,7 @@ export const MainWrapper = styled(View)`
   border-radius: 35px;
   padding-left: 20px;
   height: 140px;
+  width: 200px;
   margin-right: 9px;
 `;
 
@@ -19,6 +20,7 @@ export const IconAndCityWrapper = styled(View)`
   flex-direction: row;
   margin-bottom: 20px;
   margin-right: 20px;
+  justify-content: space-between;
 `;
 
 export const CityWrapper = styled(View)`

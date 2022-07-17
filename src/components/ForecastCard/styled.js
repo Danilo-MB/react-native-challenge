@@ -27,3 +27,9 @@ export const Temperature = styled(Text)`
   ${getFont('Poppins', '600')};
   color: black;
 `;
+
+export const Humidity = styled(Text)`
+  font-size: 16px;
+  ${getFont('Poppins', '600')};
+  color: black;
+`;

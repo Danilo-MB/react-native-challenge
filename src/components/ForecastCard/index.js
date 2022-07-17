@@ -1,17 +1,23 @@
 import React from 'react';
+import { Image } from 'react-native';
 import { 
   MainWrapper,
   DayPhase,
   Temperature,
+  Humidity,
 } from './styled';
 
-const ForecastCard = () => {
+const ForecastCard = ({ dayPhase, iconUrl, temp, humidity}) => {
 
   return (
     <MainWrapper>
-      <DayPhase>Tarde</DayPhase>
-      <Temperature>Aca va el icono</Temperature>
-      <Temperature>19</Temperature>
+      <DayPhase>{dayPhase}</DayPhase>
+      <Image 
+        source={{uri: iconUrl}}
+        style={{width: 30, height: 30}} 
+      />
+      <Temperature>{`${temp}ºC`}</Temperature>
+      <Humidity>{`${humidity}%`}</Humidity>
     </MainWrapper>
   )
 
