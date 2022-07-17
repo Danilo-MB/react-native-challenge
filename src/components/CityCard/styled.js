@@ -24,6 +24,7 @@ export const IconAndCityWrapper = styled(View)`
 export const CityWrapper = styled(View)`
   flex-direction: column;
   padding-left: 10px;
+  width: 120px;
 `;
 
 export const City = styled(Text)`

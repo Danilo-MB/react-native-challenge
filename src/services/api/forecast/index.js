@@ -7,7 +7,7 @@ const path = (apiUrl, city) => `http://api.weatherapi.com/v1/${apiUrl}?key=${API
 export const getCurrentCityInfo = async (city) => {
   try {
     const response = await axios.get(path('current.json', city));
-    //console.log(response.data, 'response')
+    // /console.log(response.data, 'response')
     return response.data;
   } catch (error) {
     if (error.reponse) {
@@ -28,4 +28,23 @@ export const searchCity = async (city) => {
     }
     return ({message: error.message});
   }
+};
+
+// export const getOtherCities = async () => {
+//   const cityNames = ['Villa Lugano', 'Monoto', 'Boruku', 'Glenover', 'Hoag'];
+//   const cities = [];
+//   cityNames.map((city, index) => {
+//     cities[index] = await getCurrentCityInfo(city);
+//   })
+//   return cities;
+// };
+
+export const getOtherCities = async () => {
+  const cityNames = ['Villa Lugano', 'Monoto', 'Boruku', 'Glenover', 'Hoag'];
+  let cities = [];
+  for (let city of cityNames) {
+    getCurrentCityInfo(city).then((res => cities.push(res)))
+  }
+  // console.log(cities, 'array de ciudades')
+  return cities;
 };

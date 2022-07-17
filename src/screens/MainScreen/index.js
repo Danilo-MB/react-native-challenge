@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Dimensions, View } from 'react-native';
+import { Dimensions, View, Keyboard } from 'react-native';
 import { 
   MainWrapper,
   DateWrapper,
@@ -13,13 +13,14 @@ import {
 import SearchInput from '../../components/SearchInput';
 import MainCard from '../../components/MainCard';
 import CityCard from '../../components/CityCard';
-import { getCurrentCityInfo, searchCity } from '../../services/api/forecast';
+import { getCurrentCityInfo, searchCity, getOtherCities } from '../../services/api/forecast';
 import SliderIcon from '../../components/Icons/Slider';
 import LocationIcon from '../../components/Icons/Location';
 import GradientBackground from '../../components/GradientBackground';
 import Geolocation from '@react-native-community/geolocation';
 import Prompt from '../../components/Prompt';
 import moment from 'moment';
+import Loading from '../../components/Loading';
 
 const MainScreen = ({ navigation }) => {
 
@@ -38,6 +39,7 @@ const MainScreen = ({ navigation }) => {
   const [defaultCity, setDefaultCity] = useState(null);
   const [isSearching, setIsSearching] = useState(false)
   const [searchResult, setSearchResult] = useState([]);
+  const [otherCitiesList, setOtherCitiesList] = useState([]);
 
   // Geolocation.getCurrentPosition(info => console.log(info, 'geolocal'));
 
@@ -50,12 +52,12 @@ const MainScreen = ({ navigation }) => {
     });
     searchCity(
       `${currentLocationCoords.latitude} ${currentLocationCoords.longitude}`
-    ).then((cities) => setDefaultCity(cities[0]));
+    ).then((cities) => setDefaultCity(cities[0].name));
+    getCurrentCityInfo(defaultCity).then((city) => setSelectedCity(city));
+    getOtherCities().then((cities) => setOtherCitiesList(cities));
   }, []);
 
-  useEffect(() => {
-    getCurrentCityInfo(defaultCity.name).then((city) => setSelectedCity(city));
-  }, []);
+  console.log(otherCitiesList, 'other cities')
 
   const onChangeFilter = filter => {
     setIsSearching(true);
@@ -64,18 +66,20 @@ const MainScreen = ({ navigation }) => {
   };
 
   const onSelectCity = (city) => {
-    console.log('entro')
     setIsSearching(false);
     getCurrentCityInfo(city).then((city) => setSelectedCity(city));
+    Keyboard.dismiss();
+    setFilter(null);
   };
-  console.log(selectedCity, 'SELECTED CITY')
+  // console.log(selectedCity, 'SELECTED CITY')
+  // console.log(defaultCity, 'default city')
 
-  if (!selectedCity) return null;
+  if (!selectedCity) return <Loading />;
 
   return (
     <MainWrapper>
     <Prompt
-      location={defaultCity ? defaultCity.name : 'No localization'}
+      location={!defaultCity ? 'No localization' : defaultCity }
     />
       <GradientBackground
         colorFrom='#5c3ac2'
@@ -91,6 +95,7 @@ const MainScreen = ({ navigation }) => {
       <InputWrapper>
         <SearchInput
           value={filter}
+          placeholder={selectedCity.location?.name}
           onChange={onChangeFilter}
           onPressResult={(result) => onSelectCity(result)}
           leftIcon={<LocationIcon color='gray' width={24} height={24} />}
@@ -101,9 +106,9 @@ const MainScreen = ({ navigation }) => {
       </InputWrapper>
       <MainCard 
         iconUrl={selectedCity.current?.condition.icon}
-        temperature={`${selectedCity.current?.temp_c}ºC`}
+        temperature={selectedCity.current?.temp_c}
         wind={selectedCity.current?.wind_kph}
-        humidt={`${selectedCity.current?.humidity}%`}
+        humidt={selectedCity.current?.humidity}
         goToDetail={() => navigation.navigate('DetailScreen')}
       />
       <OtherCitiesHeaderSection>
@@ -111,10 +116,15 @@ const MainScreen = ({ navigation }) => {
       </OtherCitiesHeaderSection>
       <OtherCitiesSection horizontal={true}>
         <OtherCitiesWrapper>
-          <CityCard />
-          <CityCard />
-          <CityCard />
-          <CityCard />
+          {otherCitiesList?.map((city, index) => (
+          <CityCard 
+            key={index}
+            iconUrl={city.current?.condition.icon}
+            city={city.location?.name}
+            wind={city.current?.wind_kph}
+            temp={city.current?.temp_c}
+            humidt={city.current?.humidity}
+          />))}
         </OtherCitiesWrapper>
       </OtherCitiesSection>
 

@@ -17,7 +17,7 @@ const MainCard = ({ iconUrl, temperature, wind, humidt, goToDetail }) => {
   return (
     <MainWrapper>
       <TempratureWrapper>
-        <Temperature>{temperature}</Temperature>
+        <Temperature>{`${temperature}ºC`}</Temperature>
       </TempratureWrapper>
       <IconAndDataSectionWrapper>
         <Image 
@@ -31,7 +31,7 @@ const MainCard = ({ iconUrl, temperature, wind, humidt, goToDetail }) => {
           </WeatherDataItem>
           <WeatherDataItem>
             <DataItemHeader>Humidt</DataItemHeader>
-            <DataItemInfo>{humidt}</DataItemInfo>
+            <DataItemInfo>{`${humidt}%`}</DataItemInfo>
           </WeatherDataItem>
           <DetailButton onPress={goToDetail} />
         </DataSectionWrapper>

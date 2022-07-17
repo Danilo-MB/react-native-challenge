@@ -30,7 +30,7 @@ const SearchInput = ({
       />
       {showResultsSection &&
       <ResultsSection>
-        {resultList?.map((result, index) => (
+        {resultList.map((result, index) => (
         <ResultWrapper 
           key={index}
           onPress={() => onPressResult(result.name)}

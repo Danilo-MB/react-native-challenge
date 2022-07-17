@@ -10,30 +10,34 @@ import {
   Parameter,
   Value
 } from './styled';
+import { Image } from 'react-native';
 
-const CityCard = () => {
+const CityCard = ({ iconUrl, city, wind, temp, humidt }) => {
 
   return (
     <MainWrapper>
       <IconAndCityWrapper>
-        <Location>Aca va el icono</Location>
+        <Image 
+          source={{uri: iconUrl}}
+          style={{width: 20, height: 20}} 
+        />
         <CityWrapper>
           <Location>Location</Location>
-          <City>Ciudad</City>
+          <City numberOfLines={1}>{city}</City>
         </CityWrapper>
       </IconAndCityWrapper>
       <InformationWrapper>
         <ParameterAndValueWrapper>
           <Parameter>Wind</Parameter>
-          <Value>356</Value>
+          <Value>{wind}</Value>
         </ParameterAndValueWrapper>
         <ParameterAndValueWrapper>
           <Parameter>Temp</Parameter>
-          <Value>18°C</Value>
+          <Value>{`${temp}ºC`}</Value>
         </ParameterAndValueWrapper>
         <ParameterAndValueWrapper>
           <Parameter>Humid</Parameter>
-          <Value>33%</Value>
+          <Value>{`${humidt}%`}</Value>
         </ParameterAndValueWrapper>
 
       </InformationWrapper>
