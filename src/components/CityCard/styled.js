@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import { View, Text } from 'react-native';
-import { getFont } from '../../utils';
+import { getFont, colors } from '../../utils';
 
 export const MainWrapper = styled(View)`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #8109eb;
-  border-color: #8109eb;
+  background-color: #6f23cc;
+  border-color: #6f23cc;
   border-radius: 35px;
   padding-left: 20px;
   height: 140px;
@@ -50,13 +50,13 @@ export const ParameterAndValueWrapper = styled(View)`
 
 export const Parameter = styled(Text)`
   color: lightblue;
-  ${getFont('Poppins', '500')};
-  font-size: 15px;
+  ${getFont('Poppins', '700')};
+  font-size: 10px;
   text-align: center;
 `;
 
 export const Value = styled(Text)`
-  color: white;
+  color: ${colors.white};
   ${getFont('Poppins', '400')};
   font-size: 20px;
   text-align: center;

@@ -8,9 +8,9 @@ export const MainWrapper = styled(View)`
   align-items: center;
   justify-content: space-between;
   background-color: white;
-  border-color: gray;
-  border-width: 1px;
-  border-radius: 15px;
+  border-color: #ebf1fa;
+  border-width: 3px;
+  border-radius: 18px;
   height: 70px;
   width: 160px;
   padding: 10px;
@@ -22,9 +22,13 @@ export const ParameterAndValueWrapper = styled(View)`
 `;
 
 export const Parameter = styled(Text)`
-
+  font-size: 16px;
+  ${getFont('Poppins', '700')};
+  color: black;
 `;
 
 export const Value = styled(Text)`
-
+  font-size: 14px;
+  ${getFont('Poppins', '600')};
+  color: black;
 `;

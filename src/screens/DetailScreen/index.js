@@ -7,6 +7,7 @@ import {
   TopCardLeftWrapper,
   TopCardRightWrapper,
   TopCardTemperature,
+  TopCardTime,
   ForecastHeaderWrapper,
   ForecastHeader,
   ForecastWrapper,
@@ -41,12 +42,12 @@ const DetailScreen = ({ navigation }) => {
           <ArrowLeft color='white' width={19} height={19} />
         </TopCardGoBackWrapper>
         <TopCardLeftWrapper>
-          <TopCardCity>Ciudad</TopCardCity>
-          <TopCardTemperature>19</TopCardTemperature>
+          <TopCardCity>Ciudad, Cuidad de la ciudad</TopCardCity>
+          <TopCardTemperature>19ºC</TopCardTemperature>
         </TopCardLeftWrapper>
         <TopCardRightWrapper>
           <ForecastHeader>Icono</ForecastHeader>
-          <ForecastHeader>Hora</ForecastHeader>
+          <TopCardTime>3:25 pm WIB</TopCardTime>
         </TopCardRightWrapper>
       </TopCard>
       <ForecastHeaderWrapper>

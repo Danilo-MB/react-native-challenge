@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import { TouchableOpacity, Text } from 'react-native';
+import { getFont } from '../../utils';
 
 export const Wrapper = styled(TouchableOpacity)`
-  background-color: lightblue;
+  background-color: #557dd9;
+  justify-content: center;
   padding-left: 15px;
   padding-top: 5px;
   padding-right: 15px;
@@ -13,5 +15,7 @@ export const Wrapper = styled(TouchableOpacity)`
 `;
 
 export const ButtonText = styled(Text)`
+  font-size: 16px;
+  ${getFont('Poppins', '600')};
   color: white;
 `;

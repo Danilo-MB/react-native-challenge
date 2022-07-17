@@ -7,7 +7,7 @@ const DetailButton = ({ onPress }) => {
   return (
     <Wrapper onPress={onPress} >
       <ButtonText>Detailed</ButtonText>
-      <DetailIcon color='white' width={24} height={24} />
+      <DetailIcon color='lightblue' width={24} height={24} />
     </Wrapper>
   )
 };

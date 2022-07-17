@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { getFont } from '../../utils';
 
 export const MainWrapper = styled(ScrollView)`
   display: flex;
@@ -39,11 +40,21 @@ export const TopCardRightWrapper = styled(View)`
 `;
 
 export const TopCardTemperature = styled(Text)`
-  font-size: 40px;
+  font-size: 60px;
+  ${getFont('Poppins', '700')};
+  color: white;
 `;
 
 export const TopCardCity = styled(Text)`
-  font-size: 20px;
+  font-size: 18px;
+  ${getFont('Poppins', '500')};
+  color: white;
+`;
+
+export const TopCardTime = styled(Text)`
+  font-size: 16px;
+  ${getFont('Poppins', '500')};
+  color: white;
 `;
 
 export const ForecastHeaderWrapper = styled(View)`
@@ -54,11 +65,13 @@ export const ForecastHeaderWrapper = styled(View)`
 `;
 
 export const ForecastHeader = styled(Text)`
-
+  font-size: 16px;
+  ${getFont('Poppins', '700')};
+  color: black;
 `;
 
 export const ForecastWrapper = styled(ScrollView)`
-  padding-left: 20px;
+  padding-left: 30px;
   padding-bottom: 30px;
 `;
 

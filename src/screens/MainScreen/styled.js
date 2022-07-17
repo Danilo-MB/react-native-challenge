@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { View, Text, ScrollView } from 'react-native';
+import { getFont } from '../../utils';
 
 export const MainWrapper = styled(View)`
   display: flex;
@@ -10,11 +11,13 @@ export const MainWrapper = styled(View)`
 export const DateWrapper = styled(View)`
   padding-left: 20px;
   padding-top: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
 `;
 
 export const Date = styled(Text)`
-
+  font-size: 16px;
+  ${getFont('Poppins', '600')};
+  color: lightblue;
 `;
 
 export const InputWrapper = styled(View)`
@@ -24,6 +27,16 @@ export const InputWrapper = styled(View)`
 
 export const OtherCitiesSection = styled(ScrollView)`
   padding-left: 20px;
+`;
+
+export const OtherCitiesHeaderSection = styled(View)`
+  padding-left: 20px;
+`;
+
+export const OtherCitiesHeader = styled(Text)`
+  font-size: 16px;
+  ${getFont('Poppins', '600')};
+  color: lightblue;
 `;
 
 export const OtherCitiesWrapper = styled(View)`

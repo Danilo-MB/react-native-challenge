@@ -26,7 +26,7 @@ const MainCard = ({ iconUrl, temperature, wind, humidt, goToDetail }) => {
         />
         <DataSectionWrapper>
           <WeatherDataItem>
-            <DataItemHeader>wind</DataItemHeader>
+            <DataItemHeader>Wind</DataItemHeader>
             <DataItemInfo>{wind}</DataItemInfo>
           </WeatherDataItem>
           <WeatherDataItem>

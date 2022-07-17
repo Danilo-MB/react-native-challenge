@@ -38,10 +38,14 @@ export const WeatherDataItem = styled(View)`
 `;
 
 export const DataItemHeader = styled(Text)`
+  color: lightblue;
+  ${getFont('Poppins', '600')};
   font-size: 15px;
 `;
 
 export const DataItemInfo = styled(Text)`
+  color: white;
+  ${getFont('Poppins', '600')};
   font-size: 25px;
 `;
 

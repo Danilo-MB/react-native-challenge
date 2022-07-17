@@ -7,7 +7,7 @@ const path = (apiUrl, city) => `http://api.weatherapi.com/v1/${apiUrl}?key=${API
 export const getCurrentCityInfo = async (city) => {
   try {
     const response = await axios.get(path('current.json', city));
-    console.log(response.data, 'response')
+    //console.log(response.data, 'response')
     return response.data;
   } catch (error) {
     if (error.reponse) {
@@ -20,7 +20,7 @@ export const getCurrentCityInfo = async (city) => {
 export const searchCity = async (city) => {
   try {
     const response = await axios.get(path('search.json', city));
-    // console.log(response.data[0], 'response.data')
+    //console.log(response.data, 'response.data')
     return response.data;
   } catch (error) {
     if (error.reponse) {
