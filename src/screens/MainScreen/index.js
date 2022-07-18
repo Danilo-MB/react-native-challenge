@@ -59,8 +59,8 @@ const MainScreen = ({navigation}) => {
       .then(info => {
         searchCity(`${info.coords.latitude} ${info.coords.longitude}`).then(
           cities => {
-            setDefaultCity(cities[0].name);
             setSelectedCity(defaultCity);
+            setDefaultCity(cities[0].name);
             getCurrentCityInfo(defaultCity).then(city => setSelectedCity(city));
           },
         );
@@ -69,10 +69,11 @@ const MainScreen = ({navigation}) => {
         searchCity(
           `${defaultLocationCoords.latitude} ${defaultLocationCoords.longitude}`,
         ).then(cities => {
-          setDefaultCity(cities[0].name);
-          setSelectedCity(cities[0].name);
-          getCurrentCityInfo(cities[0].name).then(city =>
-            setSelectedCity(city),
+
+          getCurrentCityInfo(cities[0].name).then(city => {
+            setSelectedCity(city)
+            setDefaultCity(cities[0].name);
+          }
           );
         }),
       );
@@ -97,7 +98,7 @@ const MainScreen = ({navigation}) => {
 
   console.log(selectedCity, defaultCity, 'selected y default');
 
-  if (!defaultCity) return <Loading />;
+  if (!selectedCity) return <Loading />;
 
   return (
     <>
