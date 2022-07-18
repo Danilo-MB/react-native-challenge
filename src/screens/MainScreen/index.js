@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Dimensions, Keyboard, View, Text} from 'react-native';
+import {Dimensions, Keyboard} from 'react-native';
 import {
   MainWrapper,
   DateWrapper,
@@ -34,7 +34,7 @@ const MainScreen = ({navigation}) => {
     .toString()} ${moment().format('DD MMM')}
   `;
 
-  const [selectedCity, setSelectedCity] = useState({});
+  const [selectedCity, setSelectedCity] = useState(null);
   const [filter, setFilter] = useState('');
   const [defaultLocationCoords, setDefaultLocationCoords] = useState({
     latitude: 0,
@@ -44,8 +44,6 @@ const MainScreen = ({navigation}) => {
   const [isSearching, setIsSearching] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
   const [otherCitiesList, setOtherCitiesList] = useState([]);
-
-  // console.log(currentLocationCoords, 'coordenadas')
 
   const geo = () => {
     return new Promise((resolve, reject) => {
@@ -80,7 +78,6 @@ const MainScreen = ({navigation}) => {
       );
   }, []);
 
-
   useEffect(() => {
     getOtherCities().then(cities => setOtherCitiesList(cities));
   }, []);
@@ -98,70 +95,70 @@ const MainScreen = ({navigation}) => {
     setFilter(null);
   };
 
+  console.log(selectedCity, defaultCity, 'selected y default');
+
+  if (!defaultCity) return <Loading />;
+
   return (
     <>
       <Prompt location={!defaultCity ? 'No localization' : defaultCity} />
-      {!defaultCity ? (
-        <Loading />
-      ) : (
-        <MainWrapper>
-          <GradientBackground
-            colorFrom="#3d0b63"
-            colorTo="#677be0"
-            id="top-card"
-            borderRadius={20}
-            orientation={'vertical'}
-            height={height}
-          />
-          <DateWrapper>
-            <Date>{currentDate}</Date>
-          </DateWrapper>
-          <InputWrapper>
-            <SearchInput
-              value={filter}
-              placeholder={selectedCity?.location?.name}
-              onChange={onChangeFilter}
-              onPressResult={result => onSelectCity(result)}
-              leftIcon={
-                <LocationIcon color={colors.gray} width={24} height={24} />
-              }
-              rightIcon={
-                <SliderIcon color={colors.gray} width={24} height={24} />
-              }
-              showResultsSection={isSearching}
-              resultList={searchResult}
-            />
-          </InputWrapper>
-          <MainCard
-            iconUrl={`http:${selectedCity?.current?.condition.icon}`}
-            temperature={selectedCity?.current?.temp_c}
-            wind={selectedCity?.current?.wind_kph}
-            humidt={selectedCity?.current?.humidity}
-            goToDetail={() =>
-              navigation.navigate('DetailScreen', {city: selectedCity})
+      <MainWrapper>
+        <GradientBackground
+          colorFrom="#3d0b63"
+          colorTo="#677be0"
+          id="top-card"
+          borderRadius={20}
+          orientation={'vertical'}
+          height={height}
+        />
+        <DateWrapper>
+          <Date>{currentDate}</Date>
+        </DateWrapper>
+        <InputWrapper>
+          <SearchInput
+            value={filter}
+            placeholder={selectedCity?.location?.name}
+            onChange={onChangeFilter}
+            onPressResult={result => onSelectCity(result)}
+            leftIcon={
+              <LocationIcon color={colors.gray} width={24} height={24} />
             }
+            rightIcon={
+              <SliderIcon color={colors.gray} width={24} height={24} />
+            }
+            showResultsSection={isSearching}
+            resultList={searchResult}
           />
-          <OtherCitiesHeaderSection>
-            <OtherCitiesHeader>Other Cities</OtherCitiesHeader>
-          </OtherCitiesHeaderSection>
-          <OtherCitiesSection
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}>
-            <OtherCitiesWrapper>
-              {otherCitiesList?.map((city, index) => (
-                <CityCard
-                  key={index}
-                  iconUrl={`http:${city.current?.condition.icon}`}
-                  city={city.location?.name}
-                  wind={city.current?.wind_kph}
-                  temp={city.current?.temp_c}
-                  humidt={city.current?.humidity}
-                />
-              ))}
-            </OtherCitiesWrapper>
-          </OtherCitiesSection>
-        </MainWrapper>
-      )}
+        </InputWrapper>
+        <MainCard
+          iconUrl={`http:${selectedCity?.current?.condition.icon}`}
+          temperature={selectedCity?.current?.temp_c}
+          wind={selectedCity?.current?.wind_kph}
+          humidt={selectedCity?.current?.humidity}
+          goToDetail={() =>
+            navigation.navigate('DetailScreen', {city: selectedCity})
+          }
+        />
+        <OtherCitiesHeaderSection>
+          <OtherCitiesHeader>Other Cities</OtherCitiesHeader>
+        </OtherCitiesHeaderSection>
+        <OtherCitiesSection
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}>
+          <OtherCitiesWrapper>
+            {otherCitiesList?.map((city, index) => (
+              <CityCard
+                key={index}
+                iconUrl={`http:${city.current?.condition.icon}`}
+                city={city.location?.name}
+                wind={city.current?.wind_kph}
+                temp={city.current?.temp_c}
+                humidt={city.current?.humidity}
+              />
+            ))}
+          </OtherCitiesWrapper>
+        </OtherCitiesSection>
+      </MainWrapper>
     </>
   );
 };

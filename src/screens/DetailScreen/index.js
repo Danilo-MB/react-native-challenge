@@ -35,7 +35,7 @@ import UVIndexImage from '../../../assets/images/uvindex.png';
 const DetailScreen = ({navigation, route}) => {
   const {city} = route.params;
 
-  const [forecast, setForecast] = useState([]);
+  const [forecast, setForecast] = useState({});
   const [tomorrowForecast, setTomorrowForecast] = useState(false);
 
   useEffect(() => {
@@ -64,6 +64,7 @@ const DetailScreen = ({navigation, route}) => {
     return dayPhase === (forecastMap[result] || forecastMap[10]);
   };
 
+  // TODO Use the following method to show parameter values included in forecast
   const getParameterValuesByDayphase = (parameter) => {
     const now = moment(city.current?.last_updated);
     
@@ -155,7 +156,7 @@ const DetailScreen = ({navigation, route}) => {
           <ParameterCard
             source={HighLowImage}
             parameter="Hi / Low"
-            value={'-/23'}
+            value={'Value'}
           />
           <ParameterCard
             source={MoonPhaseImage}
@@ -165,7 +166,7 @@ const DetailScreen = ({navigation, route}) => {
           <ParameterCard
             source={DewPointImage}
             parameter="Dew Point"
-            value={getParameterValuesByDayphase('dewpoint_c')}
+            value={'Value'}
           />
           <ParameterCard
             source={VisibilityImage}
