@@ -1,6 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
-import { SvgCss } from 'react-native-svg';
+import {View} from 'react-native';
+import {SvgCss} from 'react-native-svg';
 
 const xml = (color, width, height) => `
   <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
@@ -16,9 +16,9 @@ const xml = (color, width, height) => `
   </svg>
 `;
 
-export default ({ color, width, height }) => {
+export default ({color, width, height}) => {
   return (
-    <View style={{ width: width, height: height }}>
+    <View style={{width: width, height: height}}>
       <SvgCss xml={xml(color, width, height)} width="100%" height="100%" />
     </View>
   );

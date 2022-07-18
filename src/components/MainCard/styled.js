@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import { View, Text } from 'react-native';
-import { getFont } from '../../utils';
+import {View, Text, Dimensions} from 'react-native';
+import {getFont, colors} from '../../utils';
+
+const height = Dimensions.get('window').height;
 
 export const MainWrapper = styled(View)`
   display: flex;
@@ -8,6 +10,7 @@ export const MainWrapper = styled(View)`
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 30px;
+  margin-bottom: ${height - height * 0.99}px;
 `;
 
 export const TempratureWrapper = styled(View)`
@@ -15,7 +18,7 @@ export const TempratureWrapper = styled(View)`
 `;
 
 export const Temperature = styled(Text)`
-  color: lightblue;
+  color: ${colors.lightBlue};
   ${getFont('Poppins', '700')};
   font-size: 75px;
   text-align: center;
@@ -38,14 +41,13 @@ export const WeatherDataItem = styled(View)`
 `;
 
 export const DataItemHeader = styled(Text)`
-  color: lightblue;
+  color: ${colors.lightBlue};
   ${getFont('Poppins', '600')};
   font-size: 15px;
 `;
 
 export const DataItemInfo = styled(Text)`
-  color: white;
+  color: ${colors.white};
   ${getFont('Poppins', '600')};
   font-size: 25px;
 `;
-

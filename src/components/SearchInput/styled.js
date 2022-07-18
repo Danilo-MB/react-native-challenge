@@ -1,15 +1,13 @@
 import styled from 'styled-components';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { Input } from 'react-native-elements';
-import { getFont, colors } from '../../utils';
+import {View, Text, TouchableOpacity} from 'react-native';
+import {Input} from 'react-native-elements';
+import {getFont, colors} from '../../utils';
 
-export const MainWrapper = styled(View)`
-
-`;
+export const MainWrapper = styled(View)``;
 
 export const StyledInput = styled(Input).attrs({
   textAlign: 'left',
-  color: 'gray',
+  color: colors.gray,
   fontSize: 15,
   lineSpacing: 23,
   containerStyle: {
@@ -21,8 +19,8 @@ export const StyledInput = styled(Input).attrs({
   inputContainerStyle: {
     borderWidth: 1,
     borderRadius: 10,
-    borderColor: 'white',
-    backgroundColor: 'white',
+    borderColor: colors.white,
+    backgroundColor: colors.white,
     paddingLeft: 18,
     paddingRight: 10,
   },

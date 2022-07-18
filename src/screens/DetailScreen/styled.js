@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
-import { getFont } from '../../utils';
+import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
+import {getFont, colors} from '../../utils';
 
 export const MainWrapper = styled(ScrollView)`
   display: flex;
   flex-direcion: column;
   flex: 1;
-  background-color: white;
-  `;
+  background-color: ${colors.white};
+`;
 
 export const TopCard = styled(View)`
   flex-direction: row;
@@ -36,25 +36,24 @@ export const TopCardRightWrapper = styled(View)`
   width: 40%;
   justify-content: space-between;
   padding: 20px;
-
 `;
 
 export const TopCardTemperature = styled(Text)`
   font-size: 60px;
   ${getFont('Poppins', '700')};
-  color: white;
+  color: ${colors.white};
 `;
 
 export const TopCardCity = styled(Text)`
   font-size: 18px;
   ${getFont('Poppins', '500')};
-  color: white;
+  color: ${colors.white};
 `;
 
 export const TopCardTime = styled(Text)`
   font-size: 16px;
   ${getFont('Poppins', '500')};
-  color: white;
+  color: ${colors.white};
 `;
 
 export const ForecastHeaderWrapper = styled(View)`
@@ -67,7 +66,7 @@ export const ForecastHeaderWrapper = styled(View)`
 export const ForecastHeader = styled(Text)`
   font-size: 16px;
   ${getFont('Poppins', '700')};
-  color: black;
+  color: ${colors.black};
 `;
 
 export const ForecastWrapper = styled(ScrollView)`
@@ -84,27 +83,27 @@ export const BottomCardInnerWrapper = styled(View)`
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-`; 
+`;
 
 export const BottomCard = styled(View)`
   flex-direction: column;
   align-items: center;
   width: 100%;
   border-width: 1px;
-  border-color: white;
+  border-color: ${colors.white};
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   padding-left: 20px;
   padding-top: 30px;
   padding-right: 20px;
   padding-bottom: 10px;
-  box-shadow: 0px 0px 1px white;
+  box-shadow: 0px 0px 1px black;
   elevation: 5;
 `;
 
 export const BottomCardTogglerWrapper = styled(View)`
   height: 5px;
   width: 50px;
-  background-color: lightblue;
+  background-color: ${colors.blue};
   margin-bottom: 20px;
 `;

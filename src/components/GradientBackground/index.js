@@ -1,9 +1,15 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import Gradient from '../Gradient'
+import {View, StyleSheet} from 'react-native';
+import Gradient from '../Gradient';
 
-const GradientBackground = ({ colorFrom, colorTo, id, borderRadius, orientation, height }) => {
-
+const GradientBackground = ({
+  colorFrom,
+  colorTo,
+  id,
+  borderRadius,
+  orientation,
+  height,
+}) => {
   return (
     <View style={styles.wrapper}>
       <Gradient
@@ -23,7 +29,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: '100%',
-  }
-})
+  },
+});
 
 export default GradientBackground;

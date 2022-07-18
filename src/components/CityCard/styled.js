@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import { View, Text } from 'react-native';
-import { getFont, colors } from '../../utils';
+import {View, Text} from 'react-native';
+import {getFont, colors} from '../../utils';
 
 export const MainWrapper = styled(View)`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #6f23cc;
-  border-color: #6f23cc;
+  background-color: ${colors.purple};
+  border-color: ${colors.purple};
   border-radius: 35px;
   padding-left: 20px;
   height: 140px;
@@ -30,13 +30,13 @@ export const CityWrapper = styled(View)`
 `;
 
 export const City = styled(Text)`
-  color: white;
+  color: ${colors.white};
   ${getFont('Poppins', '500')};
   font-size: 20px;
 `;
 
 export const Location = styled(Text)`
-  color: white;
+  color: ${colors.white};
   ${getFont('Poppins', '500')};
   font-size: 12px;
 `;
@@ -52,7 +52,7 @@ export const ParameterAndValueWrapper = styled(View)`
 `;
 
 export const Parameter = styled(Text)`
-  color: lightblue;
+  color: ${colors.lightBlue};
   ${getFont('Poppins', '700')};
   font-size: 10px;
   text-align: center;

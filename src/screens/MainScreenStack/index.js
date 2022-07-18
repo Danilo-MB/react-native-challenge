@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {
   createStackNavigator,
   CardStyleInterpolators,
@@ -11,7 +10,6 @@ import DetailScreen from '../DetailScreen';
 const Stack = createStackNavigator();
 
 const MainScreenStack = () => {
-
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -20,7 +18,7 @@ const MainScreenStack = () => {
           component={MainScreen}
           options={{
             headerShown: false,
-            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           }}
         />
         <Stack.Screen
@@ -33,7 +31,6 @@ const MainScreenStack = () => {
         />
       </Stack.Navigator>
     </NavigationContainer>
-
-  )
-}
+  );
+};
 export default MainScreenStack;

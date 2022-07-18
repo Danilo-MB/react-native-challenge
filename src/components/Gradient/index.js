@@ -1,8 +1,14 @@
 import React from 'react';
-import { Svg, Defs, LinearGradient, Stop, Rect } from 'react-native-svg';
+import {Svg, Defs, LinearGradient, Stop, Rect} from 'react-native-svg';
 
-const Gradient = ({colorFrom, colorTo, id, orientation, borderRadius, height}) => {
-  
+const Gradient = ({
+  colorFrom,
+  colorTo,
+  id,
+  orientation,
+  borderRadius,
+  height,
+}) => {
   // Linear gradient values:
   let x1 = '0';
   let y1 = '1';

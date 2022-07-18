@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Image } from 'react-native';
-import { 
-  MainWrapper, 
+import React, {useState, useEffect} from 'react';
+import {Image} from 'react-native';
+import {
+  MainWrapper,
   TopCard,
   TopCardCity,
   TopCardGoBackWrapper,
@@ -23,22 +23,27 @@ import ParameterCard from '../../components/ParameterCard';
 import ArrowLeft from '../../components/Icons/ArrowLeft';
 import ForecastButton from '../../components/ForecastButton';
 import moment from 'moment';
-import { getTodayAndTomorrowForecast } from '../../services/api/forecast';
+import {getTodayAndTomorrowForecast} from '../../services/api/forecast';
 import Loading from '../../components/Loading';
+import DewPointImage from '../../../assets/images/dewpoint.png';
+import VisibilityImage from '../../../assets/images/visibility.png';
+import HumidityImage from '../../../assets/images/humidity.png';
+import MoonPhaseImage from '../../../assets/images/moonphase.png';
+import HighLowImage from '../../../assets/images/high-low.png';
+import UVIndexImage from '../../../assets/images/uvindex.png';
 
-const DetailScreen = ({ navigation, route }) => {
-
-  const { city } = route.params;
+const DetailScreen = ({navigation, route}) => {
+  const {city} = route.params;
 
   const [forecast, setForecast] = useState([]);
-  const [tomorrowForecast, setTomorrowForecast] = useState(false)
+  const [tomorrowForecast, setTomorrowForecast] = useState(false);
 
   useEffect(() => {
-    getTodayAndTomorrowForecast(city.location.name).then((forecast) => setForecast(forecast));
+    getTodayAndTomorrowForecast(city.location.name).then(forecast =>
+      setForecast(forecast),
+    );
   }, []);
 
-  //console.log(forecast[0]?.hour[0].temp_c, 'forecast en detail screen')
- 
   const forecastMap = {
     10: 'Morning',
     14: 'Afternoon',
@@ -46,112 +51,131 @@ const DetailScreen = ({ navigation, route }) => {
     22: 'Night',
   };
 
-  const isCurrent = (dayPhase) => {
-    const now = moment().hour();
-    const result = Object.keys(forecastMap).find( (k) => k >= now);
+  const hourMap = {
+    10: 'Morning',
+    14: 'Afternoon',
+    18: 'Evening',
+    22: 'Night',
+  };
+
+  const isCurrent = dayPhase => {
+    const now = moment(city.current?.last_updated).hour();
+    const result = Object.keys(forecastMap).find(k => k >= now);
     return dayPhase === (forecastMap[result] || forecastMap[10]);
   };
 
-  const getForecastCards = (dayForecast) => {
+  const getParameterValuesByDayphase = (parameter) => {
+    const now = moment(city.current?.last_updated);
+    
+    var result = forecast[0]?.hour?.find((hour) => {
+      return moment(hour?.time).hour() === now.hour();
+    });
+    
+    return result.parameter;
+  }
+
+  const getForecastCards = dayForecast => {
     return (
       <ForecastCardsWrapper>
-        {dayForecast?.hour.map((forecast, index) => { 
-        const hour = moment(forecast.time).hour();
-        if (hour in forecastMap) {
-        return (
-        <ForecastCard 
-          key={index}
-          isCurrent={isCurrent(forecastMap[hour])}
-          dayPhase={forecastMap[hour]}
-          iconUrl={`http:${forecast.condition.icon}`}
-          temp={forecast.temp_c}
-          humidity={forecast.humidity}
-      />)}})}
-    </ForecastCardsWrapper>)
-  }
+        {dayForecast?.hour.map((forecast, index) => {
+          const hour = moment(forecast.time).hour();
+          if (hour in forecastMap) {
+            return (
+              <ForecastCard
+                key={index}
+                isCurrent={isCurrent(forecastMap[hour])}
+                dayPhase={forecastMap[hour]}
+                iconUrl={`http:${forecast.condition.icon}`}
+                temp={forecast.temp_c}
+                humidity={forecast.humidity}
+              />
+            );
+          }
+        })}
+      </ForecastCardsWrapper>
+    );
+  };
 
   if (!city) return <Loading />;
 
   return (
     <MainWrapper
       showsVerticalScrollIndicator={false}
-      contentContainerStyle={{ flexGrow: 1 }}
-    >
+      contentContainerStyle={{flexGrow: 1}}>
       <TopCard>
         <GradientBackground
-          colorFrom='#5c3ac2'
-          colorTo='#7762f0'
-          id='top-card'
+          colorFrom="#3d0b63"
+          colorTo="#7762f0"
+          id="top-card"
           borderRadius={20}
           orientation={'horizontal'}
           height={200}
         />
         <TopCardGoBackWrapper onPress={() => navigation.goBack()}>
-          <ArrowLeft color='white' width={19} height={19} />
+          <ArrowLeft color="white" width={19} height={19} />
         </TopCardGoBackWrapper>
         <TopCardLeftWrapper>
           <TopCardCity>{city.location.name}</TopCardCity>
           <TopCardTemperature>{`${city.current?.temp_c}ºC`}</TopCardTemperature>
         </TopCardLeftWrapper>
         <TopCardRightWrapper>
-          <Image 
-            source={{uri: city.condition?.icon}}
-            style={{width: 50, height: 30}} 
+          <Image
+            source={{uri: `http:${city.current?.condition.icon}`}}
+            style={{width: 100, height: 100}}
+            resizeMode="contain"
           />
-          <TopCardTime>{`${moment().format('LT')} ${city.current.wind_dir} `}</TopCardTime>
+          <TopCardTime>{`${moment(city.current?.last_updated).format('LT')} ${
+            city.current?.wind_dir
+          } `}</TopCardTime>
         </TopCardRightWrapper>
       </TopCard>
       <ForecastHeaderWrapper>
         <ForecastHeader>Forecast</ForecastHeader>
-        <ForecastButton 
+        <ForecastButton
           title={tomorrowForecast ? 'View Today' : 'Tomorrow'}
           handlePress={() => setTomorrowForecast(!tomorrowForecast)}
         />
       </ForecastHeaderWrapper>
-      <ForecastWrapper 
-        showsHorizontalScrollIndicator={false}
-        horizontal={true}
-      >
+      <ForecastWrapper showsHorizontalScrollIndicator={false} horizontal={true}>
         {getForecastCards(tomorrowForecast ? forecast[1] : forecast[0])}
       </ForecastWrapper>
       <BottomCard>
-        <BottomCardTogglerWrapper>
-        </BottomCardTogglerWrapper>
-          <BottomCardInnerWrapper>
-            <ParameterCard 
-              iconUrl={'https://us.123rf.com/450wm/urfandadashov/urfandadashov1809/urfandadashov180901275/109135379-photo-not-available-vector-icon-isolated-on-transparent-background-photo-not-available-logo-concept.jpg'}
-              parameter='UV Index'
-              value={forecast[0]?.day?.uv}
-            />
-            <ParameterCard 
-              iconUrl={'https://us.123rf.com/450wm/urfandadashov/urfandadashov1809/urfandadashov180901275/109135379-photo-not-available-vector-icon-isolated-on-transparent-background-photo-not-available-logo-concept.jpg'}
-              parameter='UV Index'
-              value={forecast[0]?.day?.uv}
-            />
-            <ParameterCard 
-              iconUrl={'https://us.123rf.com/450wm/urfandadashov/urfandadashov1809/urfandadashov180901275/109135379-photo-not-available-vector-icon-isolated-on-transparent-background-photo-not-available-logo-concept.jpg'}
-              parameter='UV Index'
-              value={forecast[0]?.day?.uv}
-            />
-            <ParameterCard 
-              iconUrl={'https://us.123rf.com/450wm/urfandadashov/urfandadashov1809/urfandadashov180901275/109135379-photo-not-available-vector-icon-isolated-on-transparent-background-photo-not-available-logo-concept.jpg'}
-              parameter='UV Index'
-              value={forecast[0]?.day?.uv}
-            />
-            <ParameterCard 
-              iconUrl={'https://us.123rf.com/450wm/urfandadashov/urfandadashov1809/urfandadashov180901275/109135379-photo-not-available-vector-icon-isolated-on-transparent-background-photo-not-available-logo-concept.jpg'}
-              parameter='UV Index'
-              value={forecast[0]?.day?.uv}
-            />
-            <ParameterCard 
-              iconUrl={'https://us.123rf.com/450wm/urfandadashov/urfandadashov1809/urfandadashov180901275/109135379-photo-not-available-vector-icon-isolated-on-transparent-background-photo-not-available-logo-concept.jpg'}
-              parameter='UV Index'
-              value={forecast[0]?.day?.uv}
-            />
+        <BottomCardTogglerWrapper></BottomCardTogglerWrapper>
+        <BottomCardInnerWrapper>
+          <ParameterCard
+            source={UVIndexImage}
+            parameter="UV Index"
+            value={city.current?.uv}
+          />
+          <ParameterCard
+            source={HumidityImage}
+            parameter="Humidity"
+            value={city.current?.humidity}
+          />
+          <ParameterCard
+            source={HighLowImage}
+            parameter="Hi / Low"
+            value={'-/23'}
+          />
+          <ParameterCard
+            source={MoonPhaseImage}
+            parameter="Moon Phase"
+            value={forecast[0]?.astro.moon_phase}
+          />
+          <ParameterCard
+            source={DewPointImage}
+            parameter="Dew Point"
+            value={getParameterValuesByDayphase('dewpoint_c')}
+          />
+          <ParameterCard
+            source={VisibilityImage}
+            parameter="Visibility"
+            value={`${city.current?.vis_km} km`}
+          />
         </BottomCardInnerWrapper>
       </BottomCard>
     </MainWrapper>
-  )
-}
+  );
+};
 
 export default DetailScreen;

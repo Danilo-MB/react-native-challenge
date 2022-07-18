@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Modal, StyleSheet } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Modal, StyleSheet} from 'react-native';
 import {
   Button,
   ButtonText,
@@ -11,10 +11,8 @@ import {
   Location,
 } from './styled';
 import LocationIcon from '../Icons/Location';
-import Loading from '../Loading';
 
-const Prompt = ({ location }) => {
-
+const Prompt = ({location}) => {
   const [modalVisible, setModalVisible] = useState(true);
 
   useEffect(() => {
@@ -22,30 +20,17 @@ const Prompt = ({ location }) => {
   }, []);
 
   return (
-    <Modal
-      animationType="fade"
-      transparent={true}
-      visible={modalVisible}
-      >
+    <Modal animationType="fade" transparent={true} visible={modalVisible}>
       <Wrapper>
-        <ModalView
-          width='65%'
-          style={styles.modalView}
-          visible={modalVisible}>
+        <ModalView width="65%" style={styles.modalView} visible={modalVisible}>
           <TextWrapper>
-            <Title>
-              Wecome to Weather App
-            </Title>
-            <LocationIcon color='gray' width={24} height={24} />
-            <Location>
-              {location}
-            </Location>
+            <Title>Wecome to Weather App</Title>
+            <LocationIcon color="gray" width={24} height={24} />
+            <Location>{location}</Location>
           </TextWrapper>
           <ButtonWrapper>
             <Button onPress={() => setModalVisible(false)}>
-              <ButtonText>
-                Go to app
-              </ButtonText>
+              <ButtonText>Go to app</ButtonText>
             </Button>
           </ButtonWrapper>
         </ModalView>

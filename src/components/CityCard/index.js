@@ -1,5 +1,5 @@
 import React from 'react';
-import { 
+import {
   MainWrapper,
   IconAndCityWrapper,
   InformationWrapper,
@@ -8,18 +8,18 @@ import {
   City,
   ParameterAndValueWrapper,
   Parameter,
-  Value
+  Value,
 } from './styled';
-import { Image } from 'react-native';
+import {Image} from 'react-native';
 
-const CityCard = ({ iconUrl, city, wind, temp, humidt }) => {
-
+const CityCard = ({iconUrl, city, wind, temp, humidt}) => {
   return (
     <MainWrapper>
       <IconAndCityWrapper>
-        <Image 
+        <Image
           source={{uri: iconUrl}}
-          style={{width: 20, height: 20}} 
+          style={{width: 50, height: 50}}
+          resizeMode="contain"
         />
         <CityWrapper>
           <Location>Location</Location>
@@ -39,11 +39,9 @@ const CityCard = ({ iconUrl, city, wind, temp, humidt }) => {
           <Parameter>Humid</Parameter>
           <Value>{`${humidt}%`}</Value>
         </ParameterAndValueWrapper>
-
       </InformationWrapper>
     </MainWrapper>
-  )
-
+  );
 };
 
 export default CityCard;

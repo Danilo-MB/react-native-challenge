@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { View, Text } from 'react-native';
-import { getFont } from '../../utils';
+import {View, Text} from 'react-native';
+import {getFont, colors} from '../../utils';
 
 export const MainWrapper = styled(View)`
   display: flex;
@@ -11,7 +11,7 @@ export const MainWrapper = styled(View)`
   border-color: #8109eb;
   border-radius: 5px;
   height: 140px;
-  width: 100px;
+  width: 120px;
   margin-right: 20px;
   padding: 10px;
 `;
@@ -19,17 +19,17 @@ export const MainWrapper = styled(View)`
 export const DayPhase = styled(Text)`
   font-size: 16px;
   ${props => getFont('Poppins', props.isCurrent ? '700' : '600')};
-  color: black;
+  color: ${colors.black};
 `;
 
 export const Temperature = styled(Text)`
   font-size: 16px;
   ${getFont('Poppins', '600')};
-  color: black;
+  color: ${colors.black};
 `;
 
 export const Humidity = styled(Text)`
   font-size: 16px;
   ${getFont('Poppins', '600')};
-  color: black;
+  color: ${colors.black};
 `;
