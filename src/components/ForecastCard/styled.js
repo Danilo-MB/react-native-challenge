@@ -18,7 +18,7 @@ export const MainWrapper = styled(View)`
 
 export const DayPhase = styled(Text)`
   font-size: 16px;
-  ${getFont('Poppins', '600')};
+  ${props => getFont('Poppins', props.isCurrent ? '700' : '600')};
   color: black;
 `;
 

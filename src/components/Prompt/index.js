@@ -11,6 +11,7 @@ import {
   Location,
 } from './styled';
 import LocationIcon from '../Icons/Location';
+import Loading from '../Loading';
 
 const Prompt = ({ location }) => {
 

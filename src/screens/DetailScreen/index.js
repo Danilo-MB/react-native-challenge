@@ -24,28 +24,53 @@ import ArrowLeft from '../../components/Icons/ArrowLeft';
 import ForecastButton from '../../components/ForecastButton';
 import moment from 'moment';
 import { getTodayAndTomorrowForecast } from '../../services/api/forecast';
+import Loading from '../../components/Loading';
 
 const DetailScreen = ({ navigation, route }) => {
 
   const { city } = route.params;
 
   const [forecast, setForecast] = useState([]);
-  const [pos, setPos] = useState(0);
-  const scrollViewRef = useRef();
-  const [tomorrowForecast, setTomorrowForecast] = useState(true)
+  const [tomorrowForecast, setTomorrowForecast] = useState(false)
 
   useEffect(() => {
     getTodayAndTomorrowForecast(city.location.name).then((forecast) => setForecast(forecast));
   }, []);
 
-  console.log(forecast[0]?.hour[0].temp_c, 'forecast en detail screen')
+  //console.log(forecast[0]?.hour[0].temp_c, 'forecast en detail screen')
+ 
+  const forecastMap = {
+    10: 'Morning',
+    14: 'Afternoon',
+    18: 'Evening',
+    22: 'Night',
+  };
 
-  const handleScroll = () => {
-    if (tomorrowForecast) {
-      scrollViewRef.current.scrollToEnd({ animated: false })
-    }
-    scrollViewRef.current.scrollTo({ x: 0, animated: false })
+  const isCurrent = (dayPhase) => {
+    const now = moment().hour();
+    const result = Object.keys(forecastMap).find( (k) => k >= now);
+    return dayPhase === (forecastMap[result] || forecastMap[10]);
+  };
+
+  const getForecastCards = (dayForecast) => {
+    return (
+      <ForecastCardsWrapper>
+        {dayForecast?.hour.map((forecast, index) => { 
+        const hour = moment(forecast.time).hour();
+        if (hour in forecastMap) {
+        return (
+        <ForecastCard 
+          key={index}
+          isCurrent={isCurrent(forecastMap[hour])}
+          dayPhase={forecastMap[hour]}
+          iconUrl={`http:${forecast.condition.icon}`}
+          temp={forecast.temp_c}
+          humidity={forecast.humidity}
+      />)}})}
+    </ForecastCardsWrapper>)
   }
+
+  if (!city) return <Loading />;
 
   return (
     <MainWrapper
@@ -78,60 +103,16 @@ const DetailScreen = ({ navigation, route }) => {
       </TopCard>
       <ForecastHeaderWrapper>
         <ForecastHeader>Forecast</ForecastHeader>
-        <ForecastButton
-          onPress={() => setTomorrowForecast(!tomorrowForecast)}
+        <ForecastButton 
+          title={tomorrowForecast ? 'View Today' : 'Tomorrow'}
+          handlePress={() => setTomorrowForecast(!tomorrowForecast)}
         />
       </ForecastHeaderWrapper>
       <ForecastWrapper 
         showsHorizontalScrollIndicator={false}
         horizontal={true}
-        ref={scrollViewRef}
-        // onScroll={handleScroll}
       >
-        <ForecastCardsWrapper>
-          <ForecastCard 
-            dayPhase='Morning'
-            // iconUrl={forecast[0]?.hour[0]?.condition?.icon}
-            iconUrl={'https://us.123rf.com/450wm/urfandadashov/urfandadashov1809/urfandadashov180901275/109135379-photo-not-available-vector-icon-isolated-on-transparent-background-photo-not-available-logo-concept.jpg'}
-            temp={forecast[0]?.hour[0]?.temp_c}
-            humidity={forecast[0]?.hour[0]?.humidity}
-          />
-          <ForecastCard 
-            dayPhase='Afternoon'
-            // iconUrl={forecast[0]?.hour[0]?.condition?.icon}
-            iconUrl={'https://us.123rf.com/450wm/urfandadashov/urfandadashov1809/urfandadashov180901275/109135379-photo-not-available-vector-icon-isolated-on-transparent-background-photo-not-available-logo-concept.jpg'}
-            temp={forecast[0]?.hour[1]?.temp_c}
-            humidity={forecast[0]?.hour[1]?.humidity}
-          />
-          <ForecastCard 
-            dayPhase='Evening'
-            // iconUrl={forecast[0]?.hour[0]?.condition?.icon}
-            iconUrl={'https://us.123rf.com/450wm/urfandadashov/urfandadashov1809/urfandadashov180901275/109135379-photo-not-available-vector-icon-isolated-on-transparent-background-photo-not-available-logo-concept.jpg'}
-            temp={forecast[0]?.hour[2]?.temp_c}
-            humidity={forecast[0]?.hour[2]?.humidity}
-          />
-          <ForecastCard 
-            dayPhase='Morning'
-            // iconUrl={forecast[0]?.hour[0]?.condition?.icon}
-            iconUrl={'https://us.123rf.com/450wm/urfandadashov/urfandadashov1809/urfandadashov180901275/109135379-photo-not-available-vector-icon-isolated-on-transparent-background-photo-not-available-logo-concept.jpg'}
-            temp={forecast[1]?.hour[0]?.temp_c}
-            humidity={forecast[1]?.hour[0]?.humidity}
-          />
-          <ForecastCard 
-            dayPhase='Afernoon'
-            // iconUrl={forecast[0]?.hour[0]?.condition?.icon}
-            iconUrl={'https://us.123rf.com/450wm/urfandadashov/urfandadashov1809/urfandadashov180901275/109135379-photo-not-available-vector-icon-isolated-on-transparent-background-photo-not-available-logo-concept.jpg'}
-            temp={forecast[1]?.hour[1]?.temp_c}
-            humidity={forecast[1]?.hour[1]?.humidity}
-          />
-          <ForecastCard 
-            dayPhase='Evening'
-            // iconUrl={forecast[0]?.hour[0]?.condition?.icon}
-            iconUrl={'https://us.123rf.com/450wm/urfandadashov/urfandadashov1809/urfandadashov180901275/109135379-photo-not-available-vector-icon-isolated-on-transparent-background-photo-not-available-logo-concept.jpg'}
-            temp={forecast[1]?.hour[2]?.temp_c}
-            humidity={forecast[1]?.hour[2]?.humidity}
-          />
-        </ForecastCardsWrapper>
+        {getForecastCards(tomorrowForecast ? forecast[1] : forecast[0])}
       </ForecastWrapper>
       <BottomCard>
         <BottomCardTogglerWrapper>
@@ -167,13 +148,9 @@ const DetailScreen = ({ navigation, route }) => {
               parameter='UV Index'
               value={forecast[0]?.day?.uv}
             />
-          
-
         </BottomCardInnerWrapper>
       </BottomCard>
-
     </MainWrapper>
-
   )
 }
 

@@ -7,11 +7,11 @@ import {
   Humidity,
 } from './styled';
 
-const ForecastCard = ({ dayPhase, iconUrl, temp, humidity}) => {
+const ForecastCard = ({ dayPhase, iconUrl, temp, humidity, isCurrent }) => {
 
   return (
     <MainWrapper>
-      <DayPhase>{dayPhase}</DayPhase>
+      <DayPhase isCurrent={isCurrent}>{dayPhase}</DayPhase>
       <Image 
         source={{uri: iconUrl}}
         style={{width: 30, height: 30}} 

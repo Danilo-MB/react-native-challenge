@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0,
-    // backgroundColor: colors.loadingGrey,
+    backgroundColor: '#5c3ac2',
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 1000,

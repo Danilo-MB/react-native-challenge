@@ -22,7 +22,7 @@ import Prompt from '../../components/Prompt';
 import moment from 'moment';
 import Loading from '../../components/Loading';
 
-const MainScreen = ({ navigation, route }) => {
+const MainScreen = ({ navigation }) => {
 
   const height = Dimensions.get('window').height;
   const currentDate = `${
@@ -57,9 +57,7 @@ const MainScreen = ({ navigation, route }) => {
     getOtherCities().then((cities) => setOtherCitiesList(cities));
   }, []);
 
-  //console.log(otherCitiesList, 'other cities')
-
-  const onChangeFilter = filter => {
+  const onChangeFilter = (filter) => {
     setIsSearching(true);
     setFilter(filter);
     searchCity(filter).then((cities) => setSearchResult(cities));
@@ -74,13 +72,17 @@ const MainScreen = ({ navigation, route }) => {
   // console.log(selectedCity, 'SELECTED CITY')
   // console.log(defaultCity, 'default city')
 
-  if (!selectedCity) return <Loading />;
+  // if (!selectedCity) return <Loading />;
 
   return (
-    <MainWrapper>
+    <>
     <Prompt
       location={!defaultCity ? 'No localization' : defaultCity }
     />
+    {!defaultCity ?
+    <Loading />
+    :
+    <MainWrapper>
       <GradientBackground
         colorFrom='#5c3ac2'
         colorTo='#677be0'
@@ -105,7 +107,7 @@ const MainScreen = ({ navigation, route }) => {
         />
       </InputWrapper>
       <MainCard 
-        iconUrl={selectedCity.current?.condition.icon}
+        iconUrl={'http://cdn.weatherapi.com/weather/64x64/day/113.png'}
         temperature={selectedCity.current?.temp_c}
         wind={selectedCity.current?.wind_kph}
         humidt={selectedCity.current?.humidity}
@@ -127,9 +129,8 @@ const MainScreen = ({ navigation, route }) => {
           />))}
         </OtherCitiesWrapper>
       </OtherCitiesSection>
-
-    </MainWrapper>
-
+    </MainWrapper>}
+    </>
   )
 }
 
