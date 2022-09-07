@@ -93,9 +93,9 @@ export const BottomCard = styled(View)`
   border-color: ${colors.white};
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  padding-left: 20px;
+  padding-left: 10px;
   padding-top: 30px;
-  padding-right: 20px;
+  padding-right: 10px;
   padding-bottom: 10px;
   box-shadow: 0px 0px 1px black;
   elevation: 5;

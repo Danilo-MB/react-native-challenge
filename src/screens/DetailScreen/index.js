@@ -86,7 +86,7 @@ const DetailScreen = ({navigation, route}) => {
                 key={index}
                 isCurrent={isCurrent(forecastMap[hour])}
                 dayPhase={forecastMap[hour]}
-                iconUrl={`http:${forecast.condition.icon}`}
+                iconUrl={`https:${forecast.condition.icon}`}
                 temp={forecast.temp_c}
                 humidity={forecast.humidity}
               />
@@ -121,7 +121,7 @@ const DetailScreen = ({navigation, route}) => {
         </TopCardLeftWrapper>
         <TopCardRightWrapper>
           <Image
-            source={{uri: `http:${city.current?.condition.icon}`}}
+            source={{uri: `https:${city.current?.condition.icon}`}}
             style={{width: 100, height: 100}}
             resizeMode="contain"
           />

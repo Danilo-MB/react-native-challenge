@@ -96,8 +96,6 @@ const MainScreen = ({navigation}) => {
     setFilter(null);
   };
 
-  console.log(selectedCity, defaultCity, 'selected y default');
-
   if (!selectedCity) return <Loading />;
 
   return (
@@ -132,7 +130,7 @@ const MainScreen = ({navigation}) => {
           />
         </InputWrapper>
         <MainCard
-          iconUrl={`http:${selectedCity?.current?.condition.icon}`}
+          iconUrl={`https:${selectedCity?.current?.condition.icon}`}
           temperature={selectedCity?.current?.temp_c}
           wind={selectedCity?.current?.wind_kph}
           humidt={selectedCity?.current?.humidity}
@@ -150,7 +148,7 @@ const MainScreen = ({navigation}) => {
             {otherCitiesList?.map((city, index) => (
               <CityCard
                 key={index}
-                iconUrl={`http:${city.current?.condition.icon}`}
+                iconUrl={`https:${city.current?.condition.icon}`}
                 city={city.location?.name}
                 wind={city.current?.wind_kph}
                 temp={city.current?.temp_c}

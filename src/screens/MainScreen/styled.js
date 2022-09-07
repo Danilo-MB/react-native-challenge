@@ -27,11 +27,13 @@ export const InputWrapper = styled(View)`
 
 export const OtherCitiesSection = styled(ScrollView)`
   padding-left: 20px;
+  z-index: -999;
 `;
 
 export const OtherCitiesHeaderSection = styled(View)`
   padding-left: 20px;
   padding-bottom: 20px;
+  z-index: -999;
 `;
 
 export const OtherCitiesHeader = styled(Text)`

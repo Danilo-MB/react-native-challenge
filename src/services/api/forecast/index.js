@@ -1,15 +1,15 @@
 import axios from 'axios';
-
-const API_KEY = '6be8c28794924ed8a2a184922222905';
+import {API_KEY, BASE_URL} from '@env'
 
 const path = (apiUrl, city, forecast = '') =>
-  `http://api.weatherapi.com/v1/${apiUrl}?key=${API_KEY}&q=${city}${forecast}`;
+  `${BASE_URL}/${apiUrl}?key=${API_KEY}&q=${city}${forecast}`;
 
 export const getCurrentCityInfo = async city => {
   try {
     const response = await axios.get(path('current.json', city));
     return response.data;
   } catch (error) {
+    console.log(error.response, 'error en getCurrentCityInfoespon')
     throw error;
   }
 };
@@ -20,6 +20,7 @@ export const searchCity = async city => {
     const response = await axios.get(path('search.json', city));
     return response.data;
   } catch (error) {
+    console.log(error.response, 'error en search city')
     throw error;
   }
 };

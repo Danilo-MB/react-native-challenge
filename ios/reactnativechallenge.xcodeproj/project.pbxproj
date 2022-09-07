@@ -12,8 +12,14 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		195A6A8328C9141B0041BAE9 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 195A6A8228C9141B0041BAE9 /* fonts */; };
 		7699B88040F8A987B510C191 /* libPods-reactnativechallenge-reactnativechallengeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-reactnativechallenge-reactnativechallengeTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		5EC28ED7C1B8411385F41A47 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9D92789B3D144BC89AEBA1E /* Poppins-Bold.ttf */; };
+		FD868E90F6FE46E38E9E3356 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10AAB920C8324F748387D7B6 /* Poppins-Light.ttf */; };
+		4D4D588333214F6B91CD38A5 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 948B0D4F07E648808A90794B /* Poppins-Medium.ttf */; };
+		24BA256C27D74F1F962F368F /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CB041B5F6F645EDB18B7216 /* Poppins-Regular.ttf */; };
+		FC00C5CED26943378AC05616 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 79B19E6803194847B5FCB707 /* Poppins-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +42,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = reactnativechallenge/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = reactnativechallenge/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = reactnativechallenge/main.m; sourceTree = "<group>"; };
+		195A6A8228C9141B0041BAE9 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../assets/fonts; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-reactnativechallenge-reactnativechallengeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reactnativechallenge-reactnativechallengeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-reactnativechallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativechallenge.debug.xcconfig"; path = "Target Support Files/Pods-reactnativechallenge/Pods-reactnativechallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-reactnativechallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativechallenge.release.xcconfig"; path = "Target Support Files/Pods-reactnativechallenge/Pods-reactnativechallenge.release.xcconfig"; sourceTree = "<group>"; };
@@ -44,6 +51,11 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = reactnativechallenge/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-reactnativechallenge-reactnativechallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativechallenge-reactnativechallengeTests.release.xcconfig"; path = "Target Support Files/Pods-reactnativechallenge-reactnativechallengeTests/Pods-reactnativechallenge-reactnativechallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		C9D92789B3D144BC89AEBA1E /* Poppins-Bold.ttf */ = {isa = PBXFileReference; name = "Poppins-Bold.ttf"; path = "../assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		10AAB920C8324F748387D7B6 /* Poppins-Light.ttf */ = {isa = PBXFileReference; name = "Poppins-Light.ttf"; path = "../assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		948B0D4F07E648808A90794B /* Poppins-Medium.ttf */ = {isa = PBXFileReference; name = "Poppins-Medium.ttf"; path = "../assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1CB041B5F6F645EDB18B7216 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; name = "Poppins-Regular.ttf"; path = "../assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		79B19E6803194847B5FCB707 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; name = "Poppins-SemiBold.ttf"; path = "../assets/fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,12 +128,14 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				195A6A8228C9141B0041BAE9 /* fonts */,
 				13B07FAE1A68108700A75B9A /* reactnativechallenge */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* reactnativechallengeTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				B33F9B2EC7BC4ED995B27B42 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +161,19 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		B33F9B2EC7BC4ED995B27B42 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				C9D92789B3D144BC89AEBA1E /* Poppins-Bold.ttf */,
+				10AAB920C8324F748387D7B6 /* Poppins-Light.ttf */,
+				948B0D4F07E648808A90794B /* Poppins-Medium.ttf */,
+				1CB041B5F6F645EDB18B7216 /* Poppins-Regular.ttf */,
+				79B19E6803194847B5FCB707 /* Poppins-SemiBold.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -242,8 +269,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				195A6A8328C9141B0041BAE9 /* fonts in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				5EC28ED7C1B8411385F41A47 /* Poppins-Bold.ttf in Resources */,
+				FD868E90F6FE46E38E9E3356 /* Poppins-Light.ttf in Resources */,
+				4D4D588333214F6B91CD38A5 /* Poppins-Medium.ttf in Resources */,
+				24BA256C27D74F1F962F368F /* Poppins-Regular.ttf in Resources */,
+				FC00C5CED26943378AC05616 /* Poppins-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

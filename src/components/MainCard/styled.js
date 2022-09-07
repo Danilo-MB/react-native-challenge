@@ -11,6 +11,7 @@ export const MainWrapper = styled(View)`
   padding-right: 20px;
   padding-bottom: 30px;
   margin-bottom: ${height - height * 0.99}px;
+  z-index: -999;
 `;
 
 export const TempratureWrapper = styled(View)`

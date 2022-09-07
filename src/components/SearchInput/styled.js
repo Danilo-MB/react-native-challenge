@@ -3,7 +3,9 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import {Input} from 'react-native-elements';
 import {getFont, colors} from '../../utils';
 
-export const MainWrapper = styled(View)``;
+export const MainWrapper = styled(View)`
+  
+`;
 
 export const StyledInput = styled(Input).attrs({
   textAlign: 'left',
@@ -33,9 +35,9 @@ export const ResultsSection = styled(View)`
   width: 100%;
   z-index: 1;
   top: 46px;
-  background-color: white;
+  background-color: ${colors.white};
   border-width: 1px;
-  border-color: white;
+  border-color: ${colors.white};
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 `;
